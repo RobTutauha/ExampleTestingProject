@@ -49,12 +49,12 @@ public class Box {
         return getLabel();
     }
     
-    public double getWeight() {
-        return contents.getWeight();
+    public double getWeight() {// determine what class holds weight information, create appropriate method to determine weight and tie it to this method
+        return contents.getTotalWeight();
     }
     
     public boolean canFit(Product p) {
-        return p.getWeight() < 40;
+        return p.getWeight() < 40; //All 40kgs should be 20. Should probably be a maxWeight variable so can change easily
     }
     
     public boolean canFit(Product p, int quantity) {
