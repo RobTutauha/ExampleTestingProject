@@ -3,6 +3,8 @@ package packer;
 /**
  *
  * @author I.M.Bad
+ * 
+ * address class defines and exposes address info
  */
 public class Address {
     private String street;
@@ -11,6 +13,15 @@ public class Address {
     private String postcode;
     private Coordinates coordinates;
 
+    /**
+     * Address Constructor
+     * 
+     * @param street string
+     * @param suburb string
+     * @param city string
+     * @param postcode string
+     * @param coordinates coordinates
+     */
     public Address(String street, String suburb, String city, String postcode, Coordinates coordinates) {
         this.street = street;
         this.suburb = suburb;
@@ -19,6 +30,10 @@ public class Address {
         this.coordinates = coordinates;
     }
 
+    /**
+     * Concatenates address values for easy display
+     * @return concatenated string of address
+     */
     public String toString() {
         return 
                 street + "\n" +
