@@ -3,6 +3,8 @@ package packer;
 /**
  *
  * @author I.M.Bad
+ * 
+ * Product class defines and exposes product info 
  */
 public class Product {
 
@@ -33,7 +35,7 @@ public class Product {
     }
 
     /**
-     * @return the hazardous
+     * @return the hazardous WTF IS THIS RETURNING FALSE INSTEAD OF HAZARDOUS
      */
     public boolean isHazardous() {
         return false;
@@ -46,10 +48,19 @@ public class Product {
         return fragile;
     }
 
+    /**
+     * @return the name in a dumb way
+     */
     public String toString() {
         return this.getName();
     }
     
+    /**
+     * Checks if Object is a Product
+     * if so it compares the names of the object and the product
+     * and returns a boolean
+     * @return boolean
+     */
     public boolean equals(Object o) {
         if (!(o instanceof Product)) {
             return false;
