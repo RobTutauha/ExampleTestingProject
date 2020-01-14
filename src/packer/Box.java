@@ -127,12 +127,11 @@ public class Box {
         return contents.hasFragileItems();
     }
     
-    //ALL HAZARDOUS ANYTHINGS IN THIS PROGRAM ARE PERMANENTLY FALSE WTF?
     /**
      * checks box for hazardous items
      * @return boolean
      */
     public boolean isHazardous() {
-        return false;
+        return contents.hasHazardousItems();
     }
 }
