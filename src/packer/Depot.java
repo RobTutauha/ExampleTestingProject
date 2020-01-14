@@ -21,11 +21,12 @@ public class Depot {
     }
     
     /**
-     * gets depot name/address
+     * gets depot name
      * @return string
      */
     public String getName() {
-        return address.toString();
+        //return address.toString();
+        return this.name;
     }
     
     /**
