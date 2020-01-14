@@ -9,7 +9,7 @@ import java.util.TreeSet;
  *
  * @author I.M.Bad
  * 
- * Manifest class describes box contents
+ * Manifest class describes list of products to be packed into boxes
  * 
  * runs the following methods:
  * addProduct(Product)
@@ -73,9 +73,10 @@ public class Manifest {
             quantities.put(p,quantities.get(p)-1);
         }
         // If there are none of the product, remove the product from the manifest
-        if (quantities.get(p) == 0) {
-            quantities.remove(p);
-        }
+        // COMMENTED THIS OUT SO THAT IT WILL RUN. WORK OUT WHAT IT IS INTENDED TO SATISFY AND REFACTOR AS NECESSARY
+        //if (quantities.get(p) == 0) {
+        //    quantities.remove(p);
+        //}
         // If product is still in the manifest remove one from byWeight
         if (quantities.containsKey(p)) {
             byWeight.remove(p);
