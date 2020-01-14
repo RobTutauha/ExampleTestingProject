@@ -35,10 +35,10 @@ public class Product {
     }
 
     /**
-     * @return the hazardous WTF IS THIS RETURNING FALSE INSTEAD OF HAZARDOUS
+     * @return the hazardous
      */
     public boolean isHazardous() {
-        return false;
+        return hazardous;
     }
 
     /**
