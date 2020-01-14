@@ -21,7 +21,7 @@ import java.util.TreeSet;
  * containsProduct(Product p)
  * toString()
  * hasFragileItems()
- * 
+ * hasHazardousItems()
  */
 public class Manifest {
     
@@ -140,6 +140,18 @@ public class Manifest {
     public boolean hasFragileItems() {
         for (Product p : quantities.keySet()) {
             if (p.isFragile()) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    /**
+     * Checks manifest for hazardous items and returns a boolean
+     */
+    public boolean hasHazardousItems() {
+        for (Product p : quantities.keySet()) {
+            if (p.isHazardous()) {
                 return true;
             }
         }
