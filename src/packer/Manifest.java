@@ -91,6 +91,18 @@ public class Manifest {
         for (Product p : quantities.keySet()) {
             weight = quantities.get(p) * p.getWeight();
         }
+        //System.out.println("\ngetTotalWeight = " + weight);
+        return weight;
+    }
+    
+    /**
+     * Returns the total weight for entire Manifest
+     */
+    public double getTotalManifestWeight() {
+        double weight = 0;
+        for (Product p : quantities.keySet()) {
+            weight += quantities.get(p) * p.getWeight();
+        }
         return weight;
     }
     
