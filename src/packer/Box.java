@@ -58,6 +58,7 @@ public class Box {
     public void addProduct(Product product, int quantity) {
         if (canFit(product,quantity)); {
             contents.addProduct(product, quantity);
+            boxSpace -= (product.getWeight() * quantity);
         }
     }
    
@@ -119,7 +120,7 @@ public class Box {
      * @return integer
      */
     public double remainingCapacity() {
-        return boxSpace - this.getWeight();
+        return boxSpace;
     }
     
     /**
