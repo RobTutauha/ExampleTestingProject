@@ -20,36 +20,43 @@ public class Packer {
      * @return List<Box> packedBoxes
      */
     public static List<Box> packProducts(Customer c, Depot d, Manifest m) {
+        
         List<Box> packedBoxes = new ArrayList<>();
         Box b = null;
-        while (!m.isEmpty()) { // repeat until all items are packed
-            if (b == null) {
+        while (!m.isEmpty()) { // repeat until all manifest items are packed
+            if (b == null) { //if there's no box, create a box
                 b = new Box(c,d);
                 System.out.println("\nNew Box Built.");
             }
+            
             // Pick the heaviest item in the manifest that will fit in the box
             Product prodToAdd = m.getHeaviestUnder(b.remainingCapacity());
+                        
+            // Put a product in the box
+            b.addProduct(prodToAdd);
+            System.out.println("\nAdding Product " + prodToAdd.getName() + " to box.");
+            System.out.println("\nBox has " + b.remainingCapacity() + "kg remaining");
+            m.removeProduct(prodToAdd);
+            //System.out.println("\nRemoved Product from manifest.");
+            
             // Stop if no products left that will fit in the box
-            if (prodToAdd == null) { 
+            if ((b.remainingCapacity() < 1) || (prodToAdd == null)) {
                 packedBoxes.add(b);
-                System.out.println("\nBox Packed.");
+                System.out.println("\nTOTAL MANIFEST WEIGHT: " + m.getTotalManifestWeight());
+                System.out.println("\nBox Packed with " + b.remainingCapacity() + "kg remaining");
                 b = null;
             }
-            // Else put a product in the box
-            else {
-                b.addProduct(prodToAdd);
-                System.out.println("\nAdding Product to box.");
-                m.removeProduct(prodToAdd);
-                System.out.println("\nRemoving Product from manifest.");
-            }  
+
+            prodToAdd = null;
+            
         }
-        // Once finished, add last box to packedBoxes (WHY TWICE??)
+        // Once finished, add last box to packedBoxes
         if (b != null) {
-            packedBoxes.add(b);
             packedBoxes.add(b);
         }
         System.out.println("\nBoxes Loaded.");
         return packedBoxes;
     }
+    
     
 }
