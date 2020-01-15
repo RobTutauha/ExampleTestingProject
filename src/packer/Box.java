@@ -102,7 +102,7 @@ public class Box {
      * @return boolean
      */
     public boolean canFit(Product p) {
-        return p.getWeight() < boxSpace;
+        return p.getWeight() <= boxSpace;
     }
     
     /**
@@ -112,7 +112,7 @@ public class Box {
      * @return boolean
      */
     public boolean canFit(Product p, int quantity) {
-        return (p.getWeight() * quantity) < boxSpace;
+        return (p.getWeight() * quantity) <= boxSpace;
     }
     
     /**
