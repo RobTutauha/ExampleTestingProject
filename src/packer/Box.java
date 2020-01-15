@@ -24,7 +24,7 @@ public class Box {
     private Manifest contents;
     private Customer customer;
     private Depot depot;
-    private int boxSpace = 20;
+    private int boxSpace;
 
     /**
      * Box Constructor
@@ -35,6 +35,7 @@ public class Box {
         this.customer = customer;
         this.depot = depot;
         contents = new Manifest();
+        this.boxSpace = 20;
     }
     
     /**
