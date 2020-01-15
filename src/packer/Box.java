@@ -24,7 +24,7 @@ public class Box {
     private Manifest contents;
     private Customer customer;
     private Depot depot;
-    private int baseWeight = 20;
+    private int boxSpace = 20;
 
     /**
      * Box Constructor
@@ -99,7 +99,7 @@ public class Box {
      * @return boolean
      */
     public boolean canFit(Product p) {
-        return p.getWeight() < baseWeight;
+        return p.getWeight() < boxSpace;
     }
     
     /**
@@ -109,7 +109,7 @@ public class Box {
      * @return boolean
      */
     public boolean canFit(Product p, int quantity) {
-        return (p.getWeight() * quantity) < baseWeight;
+        return (p.getWeight() * quantity) < boxSpace;
     }
     
     /**
@@ -117,7 +117,7 @@ public class Box {
      * @return integer
      */
     public double remainingCapacity() {
-        return baseWeight - this.getWeight();
+        return boxSpace - this.getWeight();
     }
     
     /**
