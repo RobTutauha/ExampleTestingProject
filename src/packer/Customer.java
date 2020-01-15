@@ -48,7 +48,7 @@ public class Customer {
     }
 
     /**
-     * calculates customer address closest to depot
+     * calculates customer address closest to specified depot
      * @param d depot
      * @return string
      */
@@ -59,6 +59,7 @@ public class Customer {
             double distance = a.getCoordinates().companyDistanceTo(d.getCoordinates());
             if (distance < bestDistance) {
                 bestAddress = a;
+                bestDistance = distance;
             }
         }
         return bestAddress;
