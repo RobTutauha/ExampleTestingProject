@@ -45,6 +45,7 @@ public class Box {
     public void addProduct(Product product) {
         if (canFit(product)) {
             contents.addProduct(product, 1);
+            boxSpace -= product.getWeight();
         }
     }
     
