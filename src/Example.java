@@ -49,6 +49,7 @@ public class Example {
 
         System.out.println("\nMANIFEST (to be packed):");
         System.out.println(manifest);
+        System.out.println("\nTOTAL MANIFEST WEIGHT: " + manifest.getTotalManifestWeight());
 
         System.out.println("\nPACKING:");
         List<Box> done = Packer.packProducts(customer, depot, manifest);
@@ -56,6 +57,8 @@ public class Example {
         // Results
         for (Box b : done) {
             System.out.println(b);
+//            System.out.println("\nMANIFEST still contains the following:");
+//            System.out.println(manifest);
         }
         
     }
