@@ -19,14 +19,18 @@ public class Packer {
      * @param m Manifest manifest
      * @return List<Box> packedBoxes
      */
+    static int boxCounter = 1;
+    
     public static List<Box> packProducts(Customer c, Depot d, Manifest m) {
         
         List<Box> packedBoxes = new ArrayList<>();
         Box b = null;
+        
+        
         while (!m.isEmpty()) { // repeat until all manifest items are packed
             if (b == null) { //if there's no box, create a box
                 b = new Box(c,d);
-                System.out.println("\nNew Box Built.");
+                System.out.println("\nBox " + boxCounter + " Built.");
             }
             
             // Pick the heaviest item in the manifest that will fit in the box
@@ -34,16 +38,21 @@ public class Packer {
                         
             // Put a product in the box
             b.addProduct(prodToAdd);
-            System.out.println("\nAdding Product " + prodToAdd.getName() + " to box.");
-            System.out.println("\nBox has " + b.remainingCapacity() + "kg remaining");
+            //System.out.println("Adding Product " + prodToAdd.getName() + " to box.");
+
+            
+            //remove product from manifest
             m.removeProduct(prodToAdd);
-            //System.out.println("\nRemoved Product from manifest.");
+
             
             // Stop if no products left that will fit in the box
             if ((b.remainingCapacity() < 1) || (prodToAdd == null)) {
                 packedBoxes.add(b);
-                System.out.println("\nTOTAL MANIFEST WEIGHT: " + m.getTotalManifestWeight());
-                System.out.println("\nBox Packed with " + b.remainingCapacity() + "kg remaining");
+//                System.out.println("\nMANIFEST still contains the following:");
+//                System.out.println(m);
+                System.out.println("Box " + boxCounter + " Packed with " + b.remainingCapacity() + "kg remaining");
+
+                boxCounter += 1; 
                 b = null;
             }
 
@@ -53,6 +62,12 @@ public class Packer {
         // Once finished, add last box to packedBoxes
         if (b != null) {
             packedBoxes.add(b);
+            if (m.isEmpty()) {
+                System.out.println("\nMANIFEST is EMPTY");
+            }
+            
+            System.out.println("\nBox " + boxCounter + " Packed with " + b.remainingCapacity() + "kg remaining");
+            b = null;
         }
         System.out.println("\nBoxes Loaded.");
         return packedBoxes;
