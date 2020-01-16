@@ -80,6 +80,9 @@ public class Box {
         if (this.isHazardous()) {
             label.append("HAZARDOUS\n");
         }
+        if (this.remainingCapacity() < 6) {
+            label.append("HEAVY\n");
+        }
         return label.toString();
     }
     //ABOVE AND BELOW ARE CIRCULAR?
