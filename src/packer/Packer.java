@@ -44,7 +44,7 @@ public class Packer {
 
             // Stop if no products left that will fit in the box
             if ((b.remainingCapacity() < 1) || (prodToAdd == null)) {
-                b = packBox(b, m, packedBoxes);
+                b = packBox(b, packedBoxes);
             }
             
             // Reset prodToAdd
@@ -54,15 +54,21 @@ public class Packer {
         
         // Once manifest is empty, add last box to packedBoxes
         if (b != null) {
-            packBox(b, m, packedBoxes);
+            packBox(b, packedBoxes);
         }
         
         System.out.println("\nBoxes Loaded.");
         return packedBoxes;
     }
     
-    
-    private static Box packBox(Box b, Manifest m, List<Box> packedBoxes) {
+    /**
+     * 
+     * @param b
+     * @param m
+     * @param packedBoxes
+     * @return 
+     */
+    private static Box packBox(Box b, List<Box> packedBoxes) {
         packedBoxes.add(b);
         System.out.println("Box " + boxCounter + " Packed with " + b.remainingCapacity() + "kg remaining");
         boxCounter += 1; 
