@@ -108,6 +108,8 @@ public class Manifest {
     
     /**
      * Returns the heaviest product in byWeight under a given weight value
+     * @param weight
+     * @return 
      */
     public Product getHeaviestUnder(double weight) {
         for (Product p : byWeight) {
