@@ -67,22 +67,9 @@ public class Coordinates {
      * @return double
      */
     public double companyDistanceTo(Coordinates other) {
-        double xDiff1 = other.getX() - this.getX();
-        //System.out.println("\nother.getX - this.getX = " + xDiff1);
-        double yDiff1 = other.getY() - this.getY();
-        //System.out.println("\nother.getY - this.getY = " + yDiff1);
-        double dist1 = Math.pow((xDiff1 * xDiff1 + yDiff1 * yDiff1),0.5);
-        //System.out.println("\nMath.pow((xDiff1 * xDiff1 + yDiff1 * yDiff1),0.5) = " + dist1);
-        double xDiff2 = other.getX() - this.getX();
-        //System.out.println("\nother.getX() - this.getX() = " + xDiff2);
-        double yDiff2 = other.getY() - this.getY();
-        //System.out.println("\nother.getY() - this.getY() = " + yDiff2);
-        double dist2 = Math.abs(xDiff2) + Math.abs(yDiff2);
-        //System.out.println("\nMath.abs(xDiff2) + Math.abs(yDiff2) = " + dist2);
-        //System.out.println("\n(dist1 + dist2)/2 = " + (dist1 + dist2)/2);
-        //System.out.println("\nEND COMPANY DISTANCE CALC ");
+        double dist1 = euclideanDistanceTo(other);
+        double dist2 = manhattanDistanceTo(other);
         return (dist1 + dist2)/2 + 1;
-        
     }
 
 }
