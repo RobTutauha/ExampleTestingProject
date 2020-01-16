@@ -62,13 +62,14 @@ public class Packer {
     }
     
     /**
-     * 
+     * Adds box to packedBoxes list and increments the box Counter
      * @param b
      * @param m
      * @param packedBoxes
-     * @return 
+     * @return Box
      */
     private static Box packBox(Box b, List<Box> packedBoxes) {
+        
         packedBoxes.add(b);
         System.out.println("Box " + boxCounter + " Packed with " + b.remainingCapacity() + "kg remaining");
         boxCounter += 1; 
@@ -76,9 +77,15 @@ public class Packer {
         return b;
     }
     
-    
+    /**
+     * Builds a box
+     * @param b
+     * @param c
+     * @param d
+     * @return Box
+     */
     private static Box buildBox(Box b, Customer c, Depot d) {
-
+        
         b = new Box(c,d);
         System.out.println("\nBox " + boxCounter + " Built.");
         return b;
