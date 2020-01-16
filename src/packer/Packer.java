@@ -28,20 +28,19 @@ public class Packer {
         
         while (!m.isEmpty()) { // repeat until all manifest items are packed
             
-            b = boxBuilder(b, c, d);
+            if (b == null) { //if there's no box, create a box
+                b = boxBuilder(b, c, d);
+            }
             
             // Pick the heaviest item in the manifest that will fit in the box
             Product prodToAdd = m.getHeaviestUnder(b.remainingCapacity());
                         
             // Put a product in the box
             b.addProduct(prodToAdd);
-            //System.out.println("Adding Product " + prodToAdd.getName() + " to box.");
-
             
             //remove product from manifest
             m.removeProduct(prodToAdd);
 
-            
             // Stop if no products left that will fit in the box
             if ((b.remainingCapacity() < 1) || (prodToAdd == null)) {
                 packedBoxes.add(b);
@@ -57,25 +56,28 @@ public class Packer {
             
         }
         // Once finished, add last box to packedBoxes
+        
         if (b != null) {
-            packedBoxes.add(b);
-            if (m.isEmpty()) {
-                System.out.println("\nMANIFEST is EMPTY");
-            }
-            
-            System.out.println("\nBox " + boxCounter + " Packed with " + b.remainingCapacity() + "kg remaining");
-            b = null;
+            boxFull(b, m, packedBoxes);
         }
         System.out.println("\nBoxes Loaded.");
         return packedBoxes;
     }
+    
+    private static void boxFull(Box b, Manifest m, List<Box> packedBoxes) {
+        
+        packedBoxes.add(b);
+        if (m.isEmpty()) {
+            System.out.println("\nMANIFEST is EMPTY");
+        }
+        System.out.println("\nBox " + boxCounter + " Packed with " + b.remainingCapacity() + "kg remaining");
+        b = null;
+    }
 
     private static Box boxBuilder(Box b, Customer c, Depot d) {
 
-        if (b == null) { //if there's no box, create a box
-            b = new Box(c,d);
-            System.out.println("\nBox " + boxCounter + " Built.");
-        }
+        b = new Box(c,d);
+        System.out.println("\nBox " + boxCounter + " Built.");
 
         return b;
     }
