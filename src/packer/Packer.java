@@ -6,6 +6,7 @@ import java.util.List;
 /**
  *
  * @author bunta
+ * Refactored by RobT
  * 
  * Packer class puts products in boxes and updates the manifest
  */
@@ -16,13 +17,14 @@ public class Packer {
     
     // List of boxes of products
     private static List<Box> packedBoxes = new ArrayList<>();
+    
 
     /**
      * Packs boxes and updates the manifest
      * 
-     * @param c Customer customer
-     * @param d Depot depot 
-     * @param m Manifest manifest
+     * @param c Customer
+     * @param d Depot 
+     * @param m Manifest
      * @return List<Box> packedBoxes
      */
     public static List<Box> packProducts(Customer c, Depot d, Manifest m) {
@@ -61,11 +63,11 @@ public class Packer {
         return packedBoxes;
     }
     
+    
     /**
      * Adds box to packedBoxes list and increments the box Counter
-     * @param b
-     * @param m
-     * @param packedBoxes
+     * @param b Box
+     * @param packedBoxes List<Box>
      * @return Box
      */
     private static Box packBox(Box b, List<Box> packedBoxes) {
@@ -77,11 +79,12 @@ public class Packer {
         return b;
     }
     
+    
     /**
      * Builds a box
-     * @param b
-     * @param c
-     * @param d
+     * @param b Box
+     * @param c Customer
+     * @param d Depot
      * @return Box
      */
     private static Box buildBox(Box b, Customer c, Depot d) {
