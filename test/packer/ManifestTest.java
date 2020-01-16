@@ -13,7 +13,7 @@ public class ManifestTest {
     // Test data
     Manifest testManifest = new Manifest();
     
-    public void packTestManifest(){
+    public void packTestData(){
         testManifest.addProduct(new Product("Hammer", 3, false, false), 1);
         testManifest.addProduct(new Product("Nails", 1, false, false), 1);
         testManifest.addProduct(new Product("Ladder", 15, false, false), 1);

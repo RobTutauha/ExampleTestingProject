@@ -46,6 +46,8 @@ public class CustomerTest {
     @Test
     public void testGetClosestAddressTo() {
         // Maybe this should be broken int three tests.
+        // THIS TEST IS DESIGNED SUCH THAT THE CLOSEST DEPOT IS ALWAYS testDepot0
+        // Take the test syntax, label each statement as to what it does and redefine the parameters so that they hit the edge cases as per iQ work
         System.out.println("getClosestAddressTo");
         Customer testCustomer;
         

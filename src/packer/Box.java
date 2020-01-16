@@ -85,11 +85,12 @@ public class Box {
         }
         return label.toString();
     }
-    //ABOVE AND BELOW ARE CIRCULAR?
+ 
     /**
-     * SEEMS TO RUIN MY BRAIN
+     * 
      * @return 
      */
+    @Override
     public String toString() {
         return getLabel();
     }
