@@ -28,6 +28,7 @@ public class Manifest {
     
     // Tracks the quantity of each product in the manifest
     private Map<Product, Integer> quantities;
+    
     // Keeps a list of all products ordered by weight
     private Set<Product> byWeight;
 
@@ -40,7 +41,8 @@ public class Manifest {
     }
     
     /**
-     * Adds a single product to the manifest by calling the overloaded addProduct method
+     * Adds a single product to the manifest
+     * @param p Product
      */
     public void addProduct(Product p) {
         addProduct(p,1);
@@ -48,9 +50,11 @@ public class Manifest {
     
     /**
      * Adds one or more of the same product to the manifest
-     */ 
+     * @param p Product
+     * @param quantity Integer
+     */
     public void addProduct(Product p, int quantity) {
-        // If the product is already in the manifest, add to the total quantity (currently multiplies but that is probably wrong)
+        // If the product is already in the manifest, add to the total quantity
         if (quantities.containsKey(p)) {
             quantities.put(p,quantities.get(p)*quantity);
         }
@@ -66,42 +70,39 @@ public class Manifest {
     
     /**
      * Removes a single product from the manifest
+     * @param p Product
      */
     public void removeProduct(Product p) {
-                // If there are none of the product, remove the product from the manifest
-        // COMMENTED THIS OUT SO THAT IT WILL RUN. WORK OUT WHAT IT IS INTENDED TO SATISFY AND REFACTOR AS NECESSARY
 
-        
-        //If there's more than none products, remove one from the manifest
+        // If there's more than none products, remove one from the manifest
         if (quantities.containsKey(p) && quantities.get(p) > 0) {
             quantities.put(p,quantities.get(p)-1);
         }
         
+        // Totally remove products when exhausted
         if (quantities.get(p) < 1) {
             quantities.remove(p);
             byWeight.remove(p);
         }
 
-        // If product is still in the manifest remove one from byWeight
-//        if (quantities.containsKey(p)) {
-//            byWeight.remove(p);
-//        }
     }
     
     /**
-     * Returns the total weight for a single product
+     * Returns the weight for every product in quantities
+     * @return 
      */
     public double getTotalWeight() {
         double weight = 0;
         for (Product p : quantities.keySet()) {
             weight = quantities.get(p) * p.getWeight();
         }
-        //System.out.println("\ngetTotalWeight = " + weight);
+
         return weight;
     }
     
     /**
      * Returns the total weight for entire Manifest
+     * @return double
      */
     public double getTotalManifestWeight() {
         double weight = 0;
@@ -114,7 +115,7 @@ public class Manifest {
     /**
      * Returns the heaviest product in byWeight under a given weight value
      * @param weight
-     * @return 
+     * @return Product
      */
     public Product getHeaviestUnder(double weight) {
         for (Product p : byWeight) {
@@ -127,13 +128,16 @@ public class Manifest {
     
     /**
      * Sets byWeight to empty
+     * @return boolean
      */
     public boolean isEmpty() {
         return byWeight.isEmpty();
     }
     
     /**
-     * Returns product and quantity (has no failsafe)
+     * Checks if a specific product is in quantities
+     * @param p Product
+     * @return boolean
      */
     public boolean containsProduct(Product p) {
         return quantities.containsKey(p) && quantities.get(p) > 0;
@@ -141,6 +145,7 @@ public class Manifest {
     
     /**
      * Returns a string version of a manifest for easy display
+     * @return string
      */
     public String toString() {
         StringBuilder result = new StringBuilder();
@@ -155,6 +160,7 @@ public class Manifest {
     
     /**
      * Checks manifest for fragile items and returns a boolean
+     * @return boolean
      */
     public boolean hasFragileItems() {
         for (Product p : quantities.keySet()) {
@@ -167,6 +173,7 @@ public class Manifest {
     
     /**
      * Checks manifest for hazardous items and returns a boolean
+     * @return boolean
      */
     public boolean hasHazardousItems() {
         for (Product p : quantities.keySet()) {
