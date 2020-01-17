@@ -20,7 +20,6 @@ package packer;
  */
 public class Box {
     
-    
     private Manifest contents;
     private Customer customer;
     private Depot depot;
@@ -39,7 +38,7 @@ public class Box {
     }
     
     /**
-     * Checks there is room and puts one product in the box
+     * Checks there is room and puts a single product in the box
      * @param product product
      */
     public void addProduct(Product product) {
@@ -49,9 +48,8 @@ public class Box {
         }
     }
     
-    
     /**
-     * Checks there is room and puts products in the box
+     * Checks there is room and puts multiple products in the box
      * @param product product
      * @param quantity quantity
      */
@@ -64,7 +62,7 @@ public class Box {
    
     /**
      * Calculates nearest address to depot and creates label accordingly
-     * @return 
+     * @return String
      */
     public String getLabel() {
         StringBuilder label = new StringBuilder();
@@ -87,8 +85,8 @@ public class Box {
     }
  
     /**
-     * 
-     * @return 
+     * Overrides toString to getLabel
+     * @return String
      */
     @Override
     public String toString() {
@@ -97,7 +95,7 @@ public class Box {
     
     /**
      * retrieves box weight
-     * @return TO BE DETERMINED
+     * @return double
      */
     public double getWeight() {// determine what class holds weight information, create appropriate method to determine weight and tie it to this method
         return contents.getTotalWeight();
@@ -115,7 +113,7 @@ public class Box {
     /**
      * determines if products will fit in the box
      * @param p product
-     * @param quantity quantity
+     * @param quantity int
      * @return boolean
      */
     public boolean canFit(Product p, int quantity) {
