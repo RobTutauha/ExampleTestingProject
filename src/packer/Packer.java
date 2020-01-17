@@ -6,7 +6,7 @@ import java.util.List;
 /**
  *
  * @author bunta
- * Refactored by RobT
+ * Refactored and ruined by RobT
  * 
  * Packer class puts products in boxes and updates the manifest
  */
@@ -17,7 +17,6 @@ public class Packer {
     
     // List of boxes of products
     private static List<Box> packedBoxes = new ArrayList<>();
-    
 
     /**
      * Packs boxes and updates the manifest
@@ -49,10 +48,9 @@ public class Packer {
                 b = packBox(b, packedBoxes);
             }
             
-            // Reset prodToAdd
+            // Reset prodToAdd for the next run through
             prodToAdd = null;
         }
-        
         
         // Once manifest is empty, add last box to packedBoxes
         if (b != null) {
@@ -63,14 +61,13 @@ public class Packer {
         return packedBoxes;
     }
     
-    
     /**
      * Adds box to packedBoxes list and increments the box Counter
      * @param b Box
      * @param packedBoxes List<Box>
      * @return Box
      */
-    private static Box packBox(Box b, List<Box> packedBoxes) {
+    public static Box packBox(Box b, List<Box> packedBoxes) {
         
         packedBoxes.add(b);
         System.out.println("Box " + boxCounter + " Packed with " + b.remainingCapacity() + "kg remaining");
@@ -79,7 +76,6 @@ public class Packer {
         return b;
     }
     
-    
     /**
      * Builds a box
      * @param b Box
@@ -87,11 +83,10 @@ public class Packer {
      * @param d Depot
      * @return Box
      */
-    private static Box buildBox(Box b, Customer c, Depot d) {
+    public static Box buildBox(Box b, Customer c, Depot d) {
         
         b = new Box(c,d);
         System.out.println("\nBox " + boxCounter + " Built.");
         return b;
     }
-    
 }
