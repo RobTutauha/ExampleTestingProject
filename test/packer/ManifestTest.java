@@ -3,7 +3,7 @@ package packer;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.BeforeClass;
-import packer.Product;
+
 /**
  *
  * @author RobT
@@ -14,40 +14,37 @@ public class ManifestTest {
     Manifest testManifest = new Manifest();
     Manifest testManifest2 = new Manifest();
     
-    public void packTestData(Manifest m){
-        testManifest.addProduct(new Product("Hammer", 3, false, false), 1);
-        testManifest.addProduct(new Product("Nails", 1, false, false), 1);
-        testManifest.addProduct(new Product("Ladder", 15, false, false), 1);
-        testManifest.addProduct(new Product("Saw", 5, false, false), 1);
-        testManifest.addProduct(new Product("Light Bulbs", 1, false, true), 1);
-        testManifest.addProduct(new Product("Weedkiller", 2, true, false), 1);
-    }
 
-    
     @BeforeClass
     public static void setUpClass() {
         System.out.println("Testing Manifest class...");
     }
     
-
+    /**
+     * Test of singleAddProduct method, of class Manifest
+     */
     @Test
     public void testSingleAddProduct() {
         System.out.println("testing single addProduct()");
         assertTrue(testManifest.isEmpty());
         testManifest.addProduct(new Product("Nails", 1, false, false));
         assertFalse(testManifest.isEmpty());
-
     }
     
+    /**
+     * Test of multipleAddProduct method, of class Manifest
+     */
     @Test
     public void testMultipleAddProduct() {
         System.out.println("testing addProduct()");
         assertTrue(testManifest.isEmpty());
         testManifest.addProduct(new Product("Nails", 1, false, false), 5);
         assertFalse(testManifest.isEmpty());
-
     }
     
+    /**
+     * Test of removeProduct method, of class Manifest
+     */
     @Test
     public void testRemoveProduct() {
         System.out.println("testing removeProduct()");
@@ -59,6 +56,9 @@ public class ManifestTest {
         assertTrue(testManifest.isEmpty());
     }
     
+    /**
+     * Test of getTotalWeight method, of class Manifest
+     */
     @Test
     public void testGetTotalWeight() {
         System.out.println("testing getTotalWeight()");
@@ -79,9 +79,11 @@ public class ManifestTest {
         
         assertEquals(weight1, weight3, 0.001);
         assertEquals(weight2, weight4, 0.001);
-
     }
     
+    /**
+     * Test of getTotalManifestWeight method, of class Manifest
+     */
     @Test
     public void testGetTotalManifestWeight() {
         System.out.println("testing getTotalManifestWeight()");
@@ -102,9 +104,11 @@ public class ManifestTest {
         
         assertEquals(weight1, weight3, 0.001);
         assertEquals(weight2, weight4, 0.001);
-
     }
     
+    /**
+     * Test of getHeaviestUnder method, of class Manifest
+     */
     @Test
     public void testGetHeaviestUnder() {
         System.out.println("testing getHeaviestUnder()");
@@ -133,7 +137,6 @@ public class ManifestTest {
         p = testManifest.getHeaviestUnder(2);
         testManifest2.addProduct(p);
         assertEquals(26, testManifest2.getTotalWeight(), 0.001);
-
     }
     
 //    @Test
@@ -142,6 +145,10 @@ public class ManifestTest {
 //
 //    }
 //    
+    
+    /**
+     * Test of containsProduct method, of class Manifest
+     */
     @Test
     public void testContainsProduct() {
         System.out.println("testing containsProduct()");
@@ -150,7 +157,6 @@ public class ManifestTest {
         testManifest.addProduct(nails);
         assertFalse(testManifest.isEmpty());
         assertTrue(testManifest.containsProduct(nails));
-
     }
     
 //    @Test
@@ -159,6 +165,10 @@ public class ManifestTest {
 //
 //    }
 //    
+    
+    /**
+     * Test of hasFragileItems method, of class Manifest
+     */
     @Test
     public void testHasFragileItems() {
         System.out.println("testing hasFragileItems()");
@@ -168,9 +178,11 @@ public class ManifestTest {
         testManifest.addProduct(nails);
         assertFalse(testManifest.isEmpty());
         assertTrue(testManifest.hasFragileItems());
-
     }
     
+    /**
+     * Test of hasHazardousItems method, of class Manifest
+     */
     @Test
     public void testHasHazardousItems() {
         System.out.println("testing hasHazardousItems()");
@@ -180,7 +192,6 @@ public class ManifestTest {
         testManifest.addProduct(nails);
         assertFalse(testManifest.isEmpty());
         assertTrue(testManifest.hasHazardousItems());
-
     }
     
     
