@@ -132,11 +132,11 @@ public class ManifestTest {
         
         p = testManifest.getHeaviestUnder(3);
         testManifest2.addProduct(p);
-        assertEquals(25, testManifest2.getTotalWeight(), 0.001);
+        assertEquals(26, testManifest2.getTotalWeight(), 0.001);
         
         p = testManifest.getHeaviestUnder(2);
         testManifest2.addProduct(p);
-        assertEquals(26, testManifest2.getTotalWeight(), 0.001);
+        assertEquals(28, testManifest2.getTotalWeight(), 0.001);
     }
     
 //    @Test
