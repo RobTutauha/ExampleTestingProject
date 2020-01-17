@@ -89,7 +89,7 @@ public class Manifest {
     
     /**
      * Returns the weight for every product in quantities
-     * @return 
+     * @return double
      */
     public double getTotalWeight() {
         double weight = 0;
@@ -114,7 +114,7 @@ public class Manifest {
     
     /**
      * Returns the heaviest product in byWeight under a given weight value
-     * @param weight
+     * @param weight double
      * @return Product
      */
     public Product getHeaviestUnder(double weight) {
