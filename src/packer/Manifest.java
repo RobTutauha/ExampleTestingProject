@@ -140,7 +140,12 @@ public class Manifest {
      * @return boolean
      */
     public boolean containsProduct(Product p) {
-        return quantities.containsKey(p) && quantities.get(p) > 0;
+        if (quantities.containsKey(p) && quantities.get(p) > 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
     
     /**
