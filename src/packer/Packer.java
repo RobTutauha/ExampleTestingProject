@@ -24,7 +24,7 @@ public class Packer {
      * @param c Customer
      * @param d Depot 
      * @param m Manifest
-     * @return List<Box> packedBoxes
+     * @return List packedBoxes
      */
     public static List<Box> packProducts(Customer c, Depot d, Manifest m) {
         
@@ -64,7 +64,7 @@ public class Packer {
     /**
      * Adds box to packedBoxes list and increments the box Counter
      * @param b Box
-     * @param packedBoxes List<Box>
+     * @param packedBoxes List of packed boxes
      * @return Box
      */
     public static Box packBox(Box b, List<Box> packedBoxes) {
