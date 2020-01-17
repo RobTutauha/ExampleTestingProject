@@ -20,20 +20,27 @@ import packer.Depot;
 public class CustomerTest {
 
     // Test data
-    Coordinates testCoordinates0 = new Coordinates(0,0);
-    Coordinates testCoordinates1 = new Coordinates(3,4);
-    Coordinates testCoordinates2 = new Coordinates(30,40);
-    Coordinates testCoordinates3 = new Coordinates(300, 400);
-    Coordinates testCoordinates4 = new Coordinates(3000, 4000);
+    Coordinates depotCoordinates1 = new Coordinates(0,0);
+    Coordinates depotCoordinates2 = new Coordinates(1000, 1000);
+    Coordinates depotCoordinates3 = new Coordinates(500, 500);
+    Coordinates testCoordinates1 = new Coordinates(1,1);
+    Coordinates testCoordinates2 = new Coordinates(499,499);
+    Coordinates testCoordinates3 = new Coordinates(749,749);
+    Coordinates testCoordinates4 = new Coordinates(999, 999);
     
-    Address testAddress0 = new Address("111 Emerge Rd", "Really", "Inn Town", "D444", testCoordinates0);
+    
+    Address depotAddress1 = new Address("111 Emerge Rd", "Really", "Inn Town", "D444", depotCoordinates1);
+    Address depotAddress2 = new Address("22 No St", "where", "Else", "E555", depotCoordinates2);
+    Address depotAddress3 = new Address("55 Some St", "Some", "where", "E555", depotCoordinates3);
     Address testAddress1 = new Address("1 First St", "Aplace", "Citadel City", "A111", testCoordinates1);
     Address testAddress2 = new Address("123 Count St", "Brooklyn", "Welling Town", "B222", testCoordinates2);
-    Address testAddress3 = new Address("321 Back St", "Christly", "Holly Oaks", "C333", testCoordinates3);
-    Address testAddress4 = new Address("55 Some St", "Somewhere", "Elsewhere", "E555", testCoordinates4);
+    Address testAddress3 = new Address("666 Hell St", "Brimstone", "Fireton", "V666", testCoordinates3);
+    Address testAddress4 = new Address("321 Back St", "Christly", "Holly Oaks", "C333", testCoordinates4);
     
-    Depot testDepot0 = new Depot("Test Depot", testAddress0);
-    Depot testDepot4 = new Depot("Test Depot", testAddress4);
+    
+    Depot testDepot1 = new Depot("Test Depot", depotAddress1);
+    Depot testDepot2 = new Depot("Test Depot", depotAddress2);
+    Depot testDepot3 = new Depot("Test Depot", depotAddress3);
         
     @BeforeClass
     public static void setUpClass() {
@@ -45,47 +52,23 @@ public class CustomerTest {
      */
     @Test
     public void testGetClosestAddressTo() {
-        // Maybe this should be broken int three tests.
-        // THIS TEST IS DESIGNED SUCH THAT THE CLOSEST DEPOT IS ALWAYS testDepot0
-        // Take the test syntax, label each statement as to what it does and redefine the parameters so that they hit the edge cases as per iQ work
         System.out.println("getClosestAddressTo");
         Customer testCustomer;
+        testCustomer = new Customer("Test Customer", testAddress4);
         
-        testCustomer = new Customer("Test Customer", testAddress3);
-        assertEquals(testAddress3, testCustomer.getClosestAddressTo(testDepot0));
-        assertEquals(testAddress3, testCustomer.getClosestAddressTo(testDepot4));
-        testCustomer.addAddress(testAddress2);
-        assertEquals(testAddress2, testCustomer.getClosestAddressTo(testDepot0));
-        assertEquals(testAddress3, testCustomer.getClosestAddressTo(testDepot4));
+        assertEquals(testAddress4, testCustomer.getClosestAddressTo(testDepot1));
+        assertEquals(testAddress4, testCustomer.getClosestAddressTo(testDepot2));
         testCustomer.addAddress(testAddress1);
-        assertEquals(testAddress1, testCustomer.getClosestAddressTo(testDepot0));
-        assertEquals(testAddress3, testCustomer.getClosestAddressTo(testDepot4));
-        testCustomer.addAddress(testAddress0);
-        assertEquals(testAddress0, testCustomer.getClosestAddressTo(testDepot0));
-        assertEquals(testAddress3, testCustomer.getClosestAddressTo(testDepot4));
-        
-        testCustomer = new Customer("Test Customer", testAddress1);
-        assertEquals(testAddress1, testCustomer.getClosestAddressTo(testDepot0));
-        assertEquals(testAddress1, testCustomer.getClosestAddressTo(testDepot4));
+        assertEquals(testAddress1, testCustomer.getClosestAddressTo(testDepot1));
+        assertEquals(testAddress4, testCustomer.getClosestAddressTo(testDepot2));
+        testCustomer.addAddress(testAddress3);
+        assertEquals(testAddress1, testCustomer.getClosestAddressTo(testDepot1));
+        assertEquals(testAddress3, testCustomer.getClosestAddressTo(testDepot3));
+        assertEquals(testAddress4, testCustomer.getClosestAddressTo(testDepot2));
         testCustomer.addAddress(testAddress2);
-        assertEquals(testAddress1, testCustomer.getClosestAddressTo(testDepot0));
-        assertEquals(testAddress2, testCustomer.getClosestAddressTo(testDepot4));
-        testCustomer.addAddress(testAddress3);
-        assertEquals(testAddress1, testCustomer.getClosestAddressTo(testDepot0));
-        assertEquals(testAddress3, testCustomer.getClosestAddressTo(testDepot4));
-        testCustomer.addAddress(testAddress4);
-        assertEquals(testAddress1, testCustomer.getClosestAddressTo(testDepot0));
-        assertEquals(testAddress4, testCustomer.getClosestAddressTo(testDepot4));
-        
-        testCustomer = new Customer("Test Customer", testAddress2);
-        assertEquals(testAddress2, testCustomer.getClosestAddressTo(testDepot0));
-        assertEquals(testAddress2, testCustomer.getClosestAddressTo(testDepot4));
-        testCustomer.addAddress(testAddress3);
-        assertEquals(testAddress2, testCustomer.getClosestAddressTo(testDepot0));
-        assertEquals(testAddress3, testCustomer.getClosestAddressTo(testDepot4));
-        testCustomer.addAddress(testAddress1);
-        assertEquals(testAddress1, testCustomer.getClosestAddressTo(testDepot0));
-        assertEquals(testAddress3, testCustomer.getClosestAddressTo(testDepot4));
+        assertEquals(testAddress1, testCustomer.getClosestAddressTo(testDepot1));
+        assertNotEquals(testAddress3, testCustomer.getClosestAddressTo(testDepot3));
+        assertEquals(testAddress2, testCustomer.getClosestAddressTo(testDepot3));
+        assertEquals(testAddress4, testCustomer.getClosestAddressTo(testDepot2));
     }
-    
 }
