@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package packer;
 
 import java.util.ArrayList;
@@ -10,7 +5,6 @@ import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 
 /**
  *
@@ -27,31 +21,19 @@ public class PackerTest {
     
     Box testBox1 = new Box(testCustomer, testDepot);
     Box testBox2 = new Box(testCustomer, testDepot);
-    Box testBox3 = new Box(testCustomer, testDepot);
     
     Manifest testManifest = new Manifest();
     List<Box> testPackedBoxes = new ArrayList<>();
 
-   
-    public void packTestData(){
-        testManifest.addProduct(new Product("Hammer", 3, false, false), 1);
-        testManifest.addProduct(new Product("Nails", 1, false, false), 1);
-        testManifest.addProduct(new Product("Ladder", 15, false, false), 1);
-        testManifest.addProduct(new Product("Saw", 5, false, false), 1);
-        testManifest.addProduct(new Product("Light Bulbs", 1, false, true), 1);
-        testManifest.addProduct(new Product("Weedkiller", 2, true, false), 1);
-        
-        testCustomer.addAddress(testCustomerAddress2);
-        
-        
-    }
 
     @BeforeClass
     public static void setUpClass() {
         System.out.println("Testing Box class...");
     }
     
-
+    /**
+     * Test of packProducts method, of class Packer
+     */
     @Test
     public void testPackProducts() {
         System.out.println("testing packProducts()");
@@ -77,7 +59,9 @@ public class PackerTest {
         assertEquals("Should be Equal", testPackedBoxes.contains(this), testPackedBoxes2.contains(this));
     }
   
-
+    /**
+     * Test of packBox method, of class Packer
+     */
     @Test
     public void testPackBox() {
         System.out.println("testing packBox()");
@@ -94,7 +78,10 @@ public class PackerTest {
         assertNotNull("Shouldn't be Null", testPackedBoxes2);
         assertEquals("Should be Equal", testPackedBoxes.contains(this), testPackedBoxes2.contains(this));
     }
-    
+
+    /**
+     * Test of buildBox method, of class Packer
+     */
     @Test
     public void testBuildBox() {
         System.out.println("testing buildBox()");
